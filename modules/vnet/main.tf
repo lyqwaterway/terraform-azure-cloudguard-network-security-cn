@@ -53,7 +53,7 @@ resource "azurerm_route_table" "frontend" {
     name = "To-Internal"
     address_prefix = var.address_space
     next_hop_type = local.next_hop_type_allowed_values[3]
-    next_hop_in_ip_address = substr(replace(azurerm_subnet.subnet[0].address_prefixes[0], "0/", "4/"), 0, local.address_prefix_length - 3)
+    next_hop_in_ip_address = join(".", [for i, v in split(".", element(split("/", azurerm_subnet.subnet[0].address_prefixes[0]), 0)) : i == 3 ? tostring(tonumber(v) + 4) : v])
   }
 }
 
@@ -72,7 +72,7 @@ resource "azurerm_route_table" "backend" {
     name = "To-Internet"
     address_prefix = "0.0.0.0/0"
     next_hop_type = local.next_hop_type_allowed_values[3]
-    next_hop_in_ip_address = substr(replace(azurerm_subnet.subnet[1].address_prefixes[0], "0/", "4/"), 0, local.address_prefix_length - 3)
+    next_hop_in_ip_address = join(".", [for i, v in split(".", element(split("/", azurerm_subnet.subnet[1].address_prefixes[0]), 0)) : i == 3 ? tostring(tonumber(v) + 4) : v])
   }
 }
 
