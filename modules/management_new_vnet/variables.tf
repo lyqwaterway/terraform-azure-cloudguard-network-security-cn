@@ -27,7 +27,7 @@ variable "admin_username" {
 }
 
 variable "admin_password" {
-  description = "Administrator password of deployed Virtual Macine. The password must meet the complexity requirements of Azure"
+  description = "Administrator password of deployed Virtual Machine. The password must meet the complexity requirements of Azure"
   type = string
 }
 
@@ -55,7 +55,7 @@ locals { // locals for 'authentication_type' allowed values
 }
 
 variable "installation_type" {
-  description = "Installaiton type"
+  description = "Installation type"
   type = string
   default = "management"
 }
@@ -127,7 +127,7 @@ locals {
   validate_admin_shell_value = index(local.admin_shell_allowed_values, var.admin_shell)
 }
 
-//********************** Natworking Variables **************************//
+//********************** Networking Variables **************************//
 variable "vnet_name" {
   description = "Virtual Network name"
   type = string

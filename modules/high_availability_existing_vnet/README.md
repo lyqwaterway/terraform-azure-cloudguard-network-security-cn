@@ -12,18 +12,20 @@ This solution uses the following modules:
 - common - used for creating a resource group and defining common variables.
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest).
 
 **Example:**
 ```
 provider "azurerm" {
+  environment = “china”
+  skip_provider_registration = true
   features {}
 }
 
 module "example_module" {
 
-        source  = "CheckPointSW/cloudguard-network-security/azure//modules/high_availability_existing_vnet"
-        version = "1.0.4"
+        source  = "yqwaterway/cloudguard-network-security-cn/azure//modules/high_availability_existing_vnet"
+        version = "1.0.2"
 
         tenant_id                       = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         source_image_vhd_uri            = "noCustomUri"

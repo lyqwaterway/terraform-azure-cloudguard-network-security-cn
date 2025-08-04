@@ -102,7 +102,11 @@ locals {
     "westcentralus" : ["20.98.146.84", "20.98.194.64", "20.69.5.162", "20.83.222.102"],
     "westus" : ["20.98.146.84", "20.98.194.64", "20.69.5.162", "20.83.222.102"],
     "eastus2euap" : ["20.45.242.18", "20.51.21.252"],
-    "centraluseuap" : ["20.45.242.18", "20.51.21.252"]
+    "centraluseuap" : ["20.45.242.18", "20.51.21.252"],
+     "chinanorth": ["139.217.51.16","139.217.171.176"],
+     "chinanorth2": ["40.73.96.39","40.73.33.105"],
+     "chinaeast": ["139.217.171.176","139.217.51.16"],
+     "chinaeast2": ["40.73.33.105","40.73.96.39"]
   }
   serial_console_ips = contains(keys(local.serial_console_ips_per_location),var.location) ? local.serial_console_ips_per_location[var.location] : []
   storage_account_ip_rules = concat(local.serial_console_ips, var.storage_account_additional_ips)
@@ -211,7 +215,7 @@ variable "delete_os_disk_on_termination" {
 
 variable "publisher" {
   description = "CheckPoint publisher"
-  default = "checkpoint"
+  default = "1723173839932"
 }
 
 //************** Storage image reference and plan variables ****************//

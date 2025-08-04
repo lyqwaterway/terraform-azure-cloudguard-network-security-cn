@@ -1,15 +1,15 @@
-![GitHub Wachers](https://img.shields.io/github/watchers/CheckPointSW/terraform-azure-cloudguard-network-security)
-![GitHub Release](https://img.shields.io/github/v/release/CheckPointSW/terraform-azure-cloudguard-network-security)
-![GitHub Commits Since Last Commit](https://img.shields.io/github/commits-since/CheckPointSW/terraform-azure-cloudguard-network-security/latest/master)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/CheckPointSW/terraform-azure-cloudguard-network-security/master)
-![GitHub Repo Size](https://img.shields.io/github/repo-size/CheckPointSW/terraform-azure-cloudguard-network-security)
-![GitHub Downloads](https://img.shields.io/github/downloads/CheckPointSW/terraform-azure-cloudguard-network-security/total)
+![GitHub Wachers](https://img.shields.io/github/watchers/lyqwaterway/terraform-azure-cloudguard-network-security-cn)
+![GitHub Release](https://img.shields.io/github/v/release/lyqwaterway/terraform-azure-cloudguard-network-security-cn)
+![GitHub Commits Since Last Commit](https://img.shields.io/github/commits-since/lyqwaterway/terraform-azure-cloudguard-network-security-cn/latest/master)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/lyqwaterway/terraform-azure-cloudguard-network-security-cn/master)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/lyqwaterway/terraform-azure-cloudguard-network-security-cn)
+![GitHub Downloads](https://img.shields.io/github/downloads/lyqwaterway/terraform-azure-cloudguard-network-security-cn/total)
 
-# Terraform Modules for CloudGuard Network Security (CGNS) - Azure
+# Terraform Modules for CloudGuard Network Security (CGNS) - Azure China
 
 
 ## Introduction
-This repository provides a structured set of Terraform modules for deploying Check Point CloudGuard Network Security in Microsoft Azure. These modules automate the creation of Virtual Networks, Security Gateways, High-Availability architectures, and more, enabling secure and scalable cloud deployments.
+This repository provides a structured set of Terraform modules for deploying Check Point CloudGuard Network Security in Microsoft Azure China. These modules automate the creation of Virtual Networks, Security Gateways, High-Availability architectures, and more, enabling secure and scalable cloud deployments.
 
 ## Repository Structure
 `Submodules:` Contains modular, reusable, production-grade Terraform components, each with its own documentation.
@@ -18,26 +18,24 @@ This repository provides a structured set of Terraform modules for deploying Che
 
  
 **Submodules:**
-* [`high_availability_existing_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/high_availability_existing_vnet) - Deploys CloudGuard High Availability solution into an existing VNet in azure.
-* [`high_availability_new_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/high_availability_new_vnet) Deploys CloudGuard High Availability solution into a new VNet.
-* [`management_existing_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/management_existing_vnet) - Deploys CloudGuard Management solution into an existing VNet.
-* [`management_new_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/management_new_vnet) - Deploys CloudGuard Management solution into a new VNet
-* [`mds_existing_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/mds_existing_vnet) - Deploys CloudGuard Management solution into a new VNet.
-* [`mds_new_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/mds_new_vnet) - Deploys CloudGuard Management solution into a new VNet.
-* [`nva_into_existing_hub`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/nva_into_existing_hub) - Deploys CloudGuard Virtual WAN NVA solution into an existing vWAN Hub.
-* [`nva_into_new_vwan`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/nva_into_new_vwan) - Deploys CloudGuard Virtual WAN NVA solution into a new vWAN Hub.
-* [`single_gateway_existing_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/single_gateway_existing_vnet) - Deploys CloudGuard Single Gateway solution into an existing VNet.
-* [`single_gateway_new_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/single_gateway_new_vnet) - Deploys CloudGuard Single Gateway solution into a new VNet.                   
-* [`vmss_existing_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/vmss_existing_vnet) - Deploys CloudGuard VMSS solution into an existing VNet.
-* [`vmss_new_vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/vmss_new_vnet) - Deploys CloudGuard VMSS solution into a new VNet.
+* [`high_availability_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/high_availability_existing_vnet) - Deploys CloudGuard High Availability solution into an existing VNet in azure.
+* [`high_availability_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/high_availability_new_vnet) Deploys CloudGuard High Availability solution into a new VNet.
+* [`management_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/management_existing_vnet) - Deploys CloudGuard Management solution into an existing VNet.
+* [`management_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/management_new_vnet) - Deploys CloudGuard Management solution into a new VNet
+* [`mds_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/mds_existing_vnet) - Deploys CloudGuard Management solution into a new VNet.
+* [`mds_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/mds_new_vnet) - Deploys CloudGuard Management solution into a new VNet.
+* [`single_gateway_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/single_gateway_existing_vnet) - Deploys CloudGuard Single Gateway solution into an existing VNet.
+* [`single_gateway_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/single_gateway_new_vnet) - Deploys CloudGuard Single Gateway solution into a new VNet.                   
+* [`vmss_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/vmss_existing_vnet) - Deploys CloudGuard VMSS solution into an existing VNet.
+* [`vmss_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/vmss_new_vnet) - Deploys CloudGuard VMSS solution into a new VNet.
 
 Internal Submodules - 
 
-* [`common`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/common) - Contains shared configurations and reusable components for all modules.
+* [`common`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/common) - Contains shared configurations and reusable components for all modules.
 
-* [`network_security_group`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/network_security_group) - Manages Network Security Groups (NSGs) with CloudGuard-specific rules.
+* [`network_security_group`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/network_security_group) - Manages Network Security Groups (NSGs) with CloudGuard-specific rules.
 
-- [`vnet`](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest/submodules/vnet) - Simplifies Virtual Network and subnet configurations.
+- [`vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/vnet) - Simplifies Virtual Network and subnet configurations.
 
 
 ## Security Rules Default Configuration
@@ -72,11 +70,13 @@ Add the required module in your Terraform configuration file (`main.tf`) to depl
 
 ```hcl
 provider "azurerm" {
+  environment = "china”
+  skip_provider_registration = true
   features {}
 }
 
 module "example_module" {
-  source  = "CheckPointSW/cloudguard-network-security/azure//modules/{module_name}"
+  source  = "yqwaterway/cloudguard-network-security-cn/azure//modules/{module_name}"
   version = "{chosen_version}"
   # Add the required inputs
 }
@@ -101,8 +101,14 @@ export TF_VAR_client_secret="{your-client-secret}"
 export TF_VAR_subscription_id="{your-subscription-id}"
 export TF_VAR_tenant_id="{your-tenant-id}"
 
+az cloud set --name AzureChinaCloud
 az login --service-principal -u $TF_VAR_client_id -p $TF_VAR_client_secret --tenant $TF_VAR_tenant_id
 az account set --subscription $TF_VAR_subscription_id
+
+az provider register --namespace Microsoft.Network --consent-to-permissions --verbose
+az provider register --namespace Microsoft.Storage --consent-to-permissions --verbose
+az provider register --namespace Microsoft.Compute --consent-to-permissions --verbose
+az provider register --namespace Microsoft.insights --consent-to-permissions --verbose
 ```
 ### PowerShell (Windows)
 ```hcl
@@ -111,8 +117,14 @@ $env:TF_VAR_client_secret="{your-client-secret}"
 $env:TF_VAR_subscription_id="{your-subscription-id}"
 $env:TF_VAR_tenant_id="{your-tenant-id}"
 
+az cloud set --name AzureChinaCloud
 az login --service-principal -u $env:TF_VAR_client_id -p $env:TF_VAR_client_secret --tenant $env:TF_VAR_tenant_id
 az account set --subscription $env:TF_VAR_subscription_id
+
+az provider register --namespace Microsoft.Network --consent-to-permissions --verbose
+az provider register --namespace Microsoft.Storage --consent-to-permissions --verbose
+az provider register --namespace Microsoft.Compute --consent-to-permissions --verbose
+az provider register --namespace Microsoft.insights --consent-to-permissions --verbose
 ```
 ### Command Prompt (Windows)
 ```hcl
@@ -121,8 +133,14 @@ set TF_VAR_client_secret="{your-client-secret}"
 set TF_VAR_subscription_id="{your-subscription-id}"
 set TF_VAR_tenant_id="{your-tenant-id}"
 
+az cloud set --name AzureChinaCloud
 az login --service-principal -u %TF_VAR_client_id% -p %TF_VAR_client_secret% --tenant %TF_VAR_tenant_id%
 az account set --subscription %TF_VAR_subscription_id%
+
+az provider register --namespace Microsoft.Network --consent-to-permissions --verbose
+az provider register --namespace Microsoft.Storage --consent-to-permissions --verbose
+az provider register --namespace Microsoft.Compute --consent-to-permissions --verbose
+az provider register --namespace Microsoft.insights --consent-to-permissions --verbose
 ```
 ---
 

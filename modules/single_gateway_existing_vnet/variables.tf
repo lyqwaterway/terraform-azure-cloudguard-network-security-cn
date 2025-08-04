@@ -262,10 +262,10 @@ variable "security_rules" {
           access = "Allow"
           protocol = "*"
           source_port_ranges = "*"
-          destination_port_ranges = ""
+          destination_port_ranges = "*"
           description = "Allow all inbound connections"
           source_address_prefix = "*"
-          destination_address_prefix = ""
+          destination_address_prefix = "*"
       }
   ]
 }

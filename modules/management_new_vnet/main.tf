@@ -258,7 +258,7 @@ resource "azurerm_virtual_machine" "mgmt-vm-instance" {
     computer_name = lower(var.mgmt_name)
     admin_username = module.common.admin_username
     admin_password = module.common.admin_password
-    custom_data = templatefile("${path.module}/cloud-init.sh", {      
+    custom_data = templatefile("${path.module}/cloud-init.sh", {
         installation_type = module.common.installation_type
         allow_upload_download = module.common.allow_upload_download
         os_version = module.common.os_version
