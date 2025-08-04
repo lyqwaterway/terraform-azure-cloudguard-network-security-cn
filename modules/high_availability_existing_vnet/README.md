@@ -17,21 +17,20 @@ Follow best practices for using CGNS modules on [the root page](https://registry
 **Example:**
 ```
 provider "azurerm" {
-  environment = “china”
-  skip_provider_registration = true
+  environment = "china"
   features {}
 }
 
 module "example_module" {
 
-        source  = "yqwaterway/cloudguard-network-security-cn/azure//modules/high_availability_existing_vnet"
-        version = "1.0.2"
+        source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/high_availability_existing_vnet"
+        version = "1.0.4"
 
         tenant_id                       = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         source_image_vhd_uri            = "noCustomUri"
         resource_group_name             = "checkpoint-ha-terraform"
         cluster_name                    = "checkpoint-ha-terraform"
-        location                        = "eastus"
+        location                        = "chinanorth3"
         vnet_name                       = "checkpoint-ha-vnet"
         vnet_resource_group             = "existing-vnet"
         frontend_subnet_name            = "frontend"
@@ -92,7 +91,7 @@ module "example_module" {
   ```
 
 ### Module's variables:
- | Name                                  | Description                                                                                                                                                      | Type           | Allowed values                                                                                                                                                                                                                                    |
+| Name                                  | Description                                                                                                                                                      | Type           | Allowed values                                                                                                                                                                                                                                    |
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **tenant_id**                         | The tenant ID of the Service Principal used to deploy the solution                                                                                               | string         |                                                                                                                                                                                                                                       |
 | **source_image_vhd_uri**              | The URI of the blob containing the development image. Please use noCustomUri if you want to use marketplace images                                               | string         | **Default:**  "noCustomUri"                                                                                                                                                                                                                            |
@@ -111,7 +110,7 @@ module "example_module" {
 | **sic_key**                           | The Secure Internal Communication one-time secret used to set up trust between the cluster object and the management server                                       | string         | Only alphanumeric characters are allowed, and the value must be 12-30 characters long<br />                                                                                                   |
 | **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                            | string         | Various valid sizes (e.g., "Standard_DS2_v2", "Standard_D4s_v3", etc.)<br />                                                                                                                  |
 | **disk_size**                         | Storage data disk size (GB)                                                                                                                                      | string         | A number in the range 100 - 3995 (GB)<br />                                                                                                                                                                                          |
-| **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                | string         | "sg-byol" - BYOL license;<br />"sg-ngtp" - NGTP PAYG license;<br />"sg-ngtx" - NGTX PAYG license<br />                                                                                        |
+| **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                | string         | "sg-byol" - BYOL license<br />                                                                                        |
 | **vm_os_offer**                       | The name of the image offer to be deployed                                                                                                                       | string         | "check-point-cg-r81.10";<br />"check-point-cg-r81.20";<br />"check-point-cg-r82";<br />                                                                            |
 | **os_version**                        | GAIA OS version                                                                                                                                                  | string         | "R8110";<br />"R8120";<br />"R82";<br />                                                                                                                                           |
 | **bootstrap_script**                  | An optional script to run on the initial boot                                                                                                                    | string         | Bootstrap script example:<br />"touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt"<br />                                                                         |
