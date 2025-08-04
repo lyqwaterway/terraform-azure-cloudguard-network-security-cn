@@ -18,18 +18,20 @@ Follow best practices for using CGNS modules on [the root page](https://registry
 **Example:**
 ```
 provider "azurerm" {
+  chinanorth3environment = "china”
+  skip_provider_registration = true
   features {}
 }
 
 module "example_module" {
 
         source  = "CheckPointSW/cloudguard-network-security/azure//modules/management_existing_vnet"
-        version = "1.0.8"
+        version = "1.0.9"
 
         source_image_vhd_uri            = "noCustomUri"
         resource_group_name             = "checkpoint-mgmt-terraform"
         mgmt_name                       = "checkpoint-mgmt-terraform"
-        location                        = "eastus"
+        location                        = "chinanorth3"
         vnet_name                       = "checkpoint-mgmt-vnet"
         vnet_resource_group             = "existing-vnet"
         management_subnet_name          = "mgmt-subnet"
@@ -37,7 +39,7 @@ module "example_module" {
         management_GUI_client_network   = "0.0.0.0/0"
         mgmt_enable_api                 = "disable"
         admin_password                  = "xxxxxxxxxxxx"
-        vm_size                         = "Standard_D4ds_v5"
+        vm_size                         = "Standard_D4ds_v4"
         disk_size                       = "110"
         vm_os_sku                       = "mgmt-byol"
         vm_os_offer                     = "check-point-cg-r82"

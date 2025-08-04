@@ -19,6 +19,8 @@ Follow best practices for using CGNS modules on [the root page](https://registry
 **Example:**
 ```
 provider "azurerm" {
+  environment = "china”
+  skip_provider_registration = true
   features {}
 }
 
@@ -30,7 +32,7 @@ module "example_module" {
   source_image_vhd_uri            = "noCustomUri"
   resource_group_name             = "checkpoint-single-gw-terraform"
   single_gateway_name             = "checkpoint-single-gw-terraform"
-  location                        = "eastus"
+  location                        = "chinanorth3"
   vnet_name                       = "checkpoint-single-gw-vnet"
   address_space                   = "10.0.0.0/16"
   frontend_subnet_prefix          = "10.0.1.0/24"
@@ -39,7 +41,7 @@ module "example_module" {
   admin_password                  = "xxxxxxxxxxxx"
   smart_1_cloud_token             = "xxxxxxxxxxxx"
   sic_key                         = "xxxxxxxxxxxx"
-  vm_size                         = "Standard_D4ds_v5"
+  vm_size                         = "Standard_D4ds_v4"
   disk_size                       = "110"
   vm_os_sku                       = "sg-byol"
   vm_os_offer                     = "check-point-cg-r82"
