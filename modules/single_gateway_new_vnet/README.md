@@ -1,6 +1,6 @@
-# Check Point CloudGuard Single Gateway Module - New VNet 
+# Check Point CloudGuard Network Security Single Gateway Terraform deployment for Azure
 
-This Terraform module deploys Check Point CloudGuard Network Security Single Gateway solution into a new VNet in azure.
+This Terraform module deploys Check Point CloudGuard Network Security Single Gateway solution into a new Vnet in Azure.
 As part of the deployment the following resources are created:
 - Resource group
 - Virtual network
@@ -8,10 +8,10 @@ As part of the deployment the following resources are created:
 - System assigned identity
 
 
-This solution uses the following submodules:
-- common - used for creating a resource group and defining common variables.
-- vnet - used for creating new virtual network and subnets.
-- network_security_group - used for creating new network security groups and rules.
+This solution uses the following modules:
+- /terraform/azure/modules/common - used for creating a resource group and defining common variables.
+- /terraform/azure/modules/vnet - used for creating new virtual network and subnets.
+- /terraform/azure/modules/network_security_group - used for creating new network security groups and rules.
 
 ## Usage
 Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest).
@@ -27,7 +27,7 @@ provider "azurerm" {
 module "example_module" {
 
   source  = "CheckPointSW/cloudguard-network-security/azure//modules/single_gateway_new_vnet"
-  version = "1.0.8"
+  version = "1.0.9"
 
   source_image_vhd_uri            = "noCustomUri"
   resource_group_name             = "checkpoint-single-gw-terraform"

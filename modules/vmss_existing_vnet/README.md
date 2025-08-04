@@ -1,6 +1,6 @@
-# Check Point CloudGuard VMSS Module - Existing VNet
+# Check Point CloudGuard IaaS VMSS Terraform deployment for Azure
 
-This Terraform module deploys Check Point CloudGuard Network Security VMSS solution into an existing VNet in azure.
+This Terraform module deploys Check Point CloudGuard IaaS VMSS solution into an existing Vnet in Azure.
 As part of the deployment the following resources are created:
 - Resource group
 - Role assignment - conditional creation
