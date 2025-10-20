@@ -19,6 +19,7 @@ module "common" {
   serial_console_password_hash = var.serial_console_password_hash
   maintenance_mode_password_hash = var.maintenance_mode_password_hash
   storage_account_additional_ips = var.storage_account_additional_ips
+  tags = merge(lookup(var.tags, "resource-group", {}), lookup(var.tags, "all", {}))
 }
 
 //********************** Networking **************************//
@@ -34,7 +35,8 @@ resource "azurerm_public_ip_prefix" "public_ip_prefix" {
   name = "${module.common.resource_group_name}-ipprefix"
   location = module.common.resource_group_location
   resource_group_name = module.common.resource_group_name
-  prefix_length = 30
+  prefix_length = length(var.vips_names) > 4 ? 28 : length(var.vips_names) > 0 ? 29 : 30
+  tags = merge(lookup(var.tags, "public-ip-prefix", {}), lookup(var.tags, "all", {}))
 }
 
 data "azurerm_subnet" "frontend" {
@@ -58,6 +60,7 @@ resource "azurerm_public_ip" "public-ip" {
   sku = var.sku
   domain_name_label = "${lower(var.cluster_name)}-${count.index+1}-${random_id.random_id.hex}"
   public_ip_prefix_id = var.use_public_ip_prefix ? (var.create_public_ip_prefix ? azurerm_public_ip_prefix.public_ip_prefix[0].id : var.existing_public_ip_prefix_id) : null
+  tags = merge(lookup(var.tags, "public-ip", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_public_ip" "cluster-vip" {
@@ -68,12 +71,27 @@ resource "azurerm_public_ip" "cluster-vip" {
   sku = var.sku
   domain_name_label = "${lower(var.cluster_name)}-vip-${random_id.random_id.hex}"
   public_ip_prefix_id = var.use_public_ip_prefix ? (var.create_public_ip_prefix ? azurerm_public_ip_prefix.public_ip_prefix[0].id : var.existing_public_ip_prefix_id) : null
+  tags = merge(lookup(var.tags, "public-ip", {}), lookup(var.tags, "all", {}))
+}
+
+resource "azurerm_public_ip" "vips" {
+  count = length(var.vips_names)
+  name = var.vips_names[count.index]
+  location = module.common.resource_group_location
+  resource_group_name = module.common.resource_group_name
+  allocation_method = var.vnet_allocation_method
+  sku = var.sku
+  domain_name_label = "${lower(var.vips_names[count.index])}-${count.index}-vip-${random_id.random_id.hex}"
+  public_ip_prefix_id = var.use_public_ip_prefix ? (var.create_public_ip_prefix ? azurerm_public_ip_prefix.public_ip_prefix[0].id : var.existing_public_ip_prefix_id) : null
+  tags = merge(lookup(var.tags, "public-ip", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_network_interface" "nic_vip" {
   depends_on = [
     azurerm_public_ip.cluster-vip,
-    azurerm_public_ip.public-ip]
+    azurerm_public_ip.public-ip,
+    azurerm_public_ip.vips,
+  ]
   name = "${var.cluster_name}1-eth0"
   location = module.common.resource_group_location
   resource_group_name = module.common.resource_group_name
@@ -96,6 +114,19 @@ resource "azurerm_network_interface" "nic_vip" {
     private_ip_address = cidrhost(data.azurerm_subnet.frontend.address_prefixes[0], var.frontend_IP_addresses[2])
     public_ip_address_id = azurerm_public_ip.cluster-vip.id
   }
+
+  dynamic "ip_configuration" {
+    for_each = var.vips_names
+    content {
+      name = "cluster-vip-${index(var.vips_names, ip_configuration.value) + 1}"
+      subnet_id = data.azurerm_subnet.frontend.id
+      primary = false
+      private_ip_address_allocation = var.vnet_allocation_method
+      private_ip_address = cidrhost(data.azurerm_subnet.frontend.address_prefixes[0], 7 + index(var.vips_names, ip_configuration.value) + 1)
+      public_ip_address_id = azurerm_public_ip.vips[index(var.vips_names, ip_configuration.value)].id
+    }
+  }
+
   lifecycle {
     ignore_changes = [
       # Ignore changes to ip_configuration when Re-applying, e.g. because a cluster failover and associating the cluster- vip with the other member.
@@ -103,6 +134,8 @@ resource "azurerm_network_interface" "nic_vip" {
       ip_configuration
     ]
   }
+
+  tags = merge(lookup(var.tags, "network-interface", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "nic_vip_lb_association" {
@@ -137,6 +170,8 @@ resource "azurerm_network_interface" "nic" {
       ip_configuration
     ]
   }
+
+  tags = merge(lookup(var.tags, "network-interface", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "nic_lb_association" {
@@ -162,6 +197,8 @@ resource "azurerm_network_interface" "nic1" {
     private_ip_address_allocation = var.vnet_allocation_method
     private_ip_address = cidrhost(data.azurerm_subnet.backend.address_prefixes[0], var.backend_IP_addresses[count.index+1])
   }
+
+  tags = merge(lookup(var.tags, "network-interface", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "nic1_lb_association" {
@@ -181,6 +218,7 @@ resource "azurerm_public_ip" "public-ip-lb" {
   sku = var.sku
   domain_name_label = "${lower(var.cluster_name)}-${random_id.random_id.hex}"
   public_ip_prefix_id = var.use_public_ip_prefix ? (var.create_public_ip_prefix ? azurerm_public_ip_prefix.public_ip_prefix[0].id : var.existing_public_ip_prefix_id) : null
+  tags = merge(lookup(var.tags, "public-ip", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_lb" "frontend-lb" {
@@ -195,6 +233,8 @@ resource "azurerm_lb" "frontend-lb" {
     name = "LoadBalancerFrontend"
     public_ip_address_id = azurerm_public_ip.public-ip-lb.id
   }
+
+  tags = merge(lookup(var.tags, "load-balancer", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_lb_backend_address_pool" "frontend-lb-pool" {
@@ -213,6 +253,8 @@ resource "azurerm_lb" "backend-lb" {
     private_ip_address_allocation = var.vnet_allocation_method
     private_ip_address = cidrhost(data.azurerm_subnet.backend.address_prefixes[0], var.backend_IP_addresses[0])
   }
+
+  tags = merge(lookup(var.tags, "load-balancer", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_lb_backend_address_pool" "backend-lb-pool" {
@@ -256,6 +298,7 @@ resource "azurerm_availability_set" "availability-set" {
   platform_fault_domain_count = 2
   platform_update_domain_count = 5
   managed = true
+  tags = merge(lookup(var.tags, "availability-set", {}), lookup(var.tags, "all", {}))
 }
 
 //********************** Storage accounts **************************//
@@ -283,6 +326,7 @@ resource "azurerm_storage_account" "vm-boot-diagnostics-storage" {
       days = "15"
     }
   }
+  tags = merge(lookup(var.tags, "storage-account", {}), lookup(var.tags, "all", {}))
 }
 
 //********************** Virtual Machines **************************//
@@ -301,6 +345,8 @@ resource "azurerm_image" "custom-image" {
     os_state = "Generalized"
     blob_uri = var.source_image_vhd_uri
   }
+
+  tags = merge(lookup(var.tags, "custom-image", {}), lookup(var.tags, "all", {}))
 }
 resource "azurerm_virtual_machine" "vm-instance-availability-set" {
   depends_on = [
@@ -393,6 +439,8 @@ resource "azurerm_virtual_machine" "vm-instance-availability-set" {
     enabled = module.common.boot_diagnostics
     storage_uri = module.common.boot_diagnostics ? join(",", azurerm_storage_account.vm-boot-diagnostics-storage.*.primary_blob_endpoint) : ""
   }
+
+  tags = merge(lookup(var.tags, "virtual-machine", {}), lookup(var.tags, "all", {}))
 }
 
 resource "azurerm_virtual_machine" "vm-instance-availability-zone" {
@@ -487,6 +535,8 @@ resource "azurerm_virtual_machine" "vm-instance-availability-zone" {
     enabled = module.common.boot_diagnostics
     storage_uri = module.common.boot_diagnostics ? join(",", azurerm_storage_account.vm-boot-diagnostics-storage.*.primary_blob_endpoint) : ""
   }
+
+  tags = merge(lookup(var.tags, "virtual-machine", {}), lookup(var.tags, "all", {}))
 }
 //********************** Role Assigments **************************//
 data "azurerm_role_definition" "virtual_machine_contributor_role_definition" {

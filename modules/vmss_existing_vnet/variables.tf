@@ -289,7 +289,7 @@ variable "frontend_port" {
 variable "backend_port" {
   description = "Port that will be exposed to the external Load Balance"
   type = string
-  default = "8081"
+  default = "80"
 }
 
 variable "frontend_load_distribution" {
@@ -365,7 +365,25 @@ variable "enable_custom_metrics" {
 variable "enable_floating_ip" {
   description = "Indicates whether the load balancers will be deployed with floating IP."
   type = bool
+  default = true
+}
+
+variable "use_public_ip_prefix" {
+  description = "Indicates whether the public IP resources will be deployed with public IP prefix."
+  type = bool
   default = false
+}
+
+variable "create_public_ip_prefix" {
+  description = "Indicates whether the public IP prefix will created or an existing will be used."
+  type = bool
+  default = false
+}
+
+variable "existing_public_ip_prefix_id" {
+  description = "The existing public IP prefix resource id."
+  type = string
+  default = ""
 }
 
 variable "nsg_id" {
@@ -396,4 +414,10 @@ variable "security_rules" {
         destination_address_prefix = "*"
       }
     ]
+}
+
+variable "tags" {
+  description = "Assign tags by resource."
+  type = map(map(string))
+  default = {}
 }

@@ -259,7 +259,7 @@ variable "enable_custom_metrics" {
 variable "enable_floating_ip" {
   description = "Indicates whether the load balancers will be deployed with floating IP."
   type = bool
-  default = false
+  default = true
 }
 
 variable "use_public_ip_prefix" {
@@ -320,4 +320,22 @@ variable "security_rules" {
       destination_address_prefix = "*"
     }
   ]
+}
+
+variable "tags" {
+  description = "Assign tags by resource."
+  type = map(map(string))
+  default = {}
+}
+
+variable "vips_names" {
+  description = "Names to be used for the VIPs"
+  type = list(string)
+  default = []
+
+  # More than 10 VIPs may result in not enough available IPs available in IpPrefix
+  validation {
+    condition = length(var.vips_names) < 10
+    error_message = "The number of VIPs must be less than 10."
+  }
 }

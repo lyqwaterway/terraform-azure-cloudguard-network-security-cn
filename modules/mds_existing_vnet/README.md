@@ -25,7 +25,7 @@ provider "azurerm" {
 module "example_module" {
 
 	source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/mds_existing_vnet"
-	version = "1.0.4"
+	version = "1.0.7"
 
 	source_image_vhd_uri            = "noCustomUri"
 	resource_group_name             = "checkpoint-mds-rg-terraform"
@@ -41,8 +41,8 @@ module "example_module" {
 	vm_size                         = "Standard_D3_v2"
 	disk_size                       = "110"
 	vm_os_sku                       = "mgmt-byol"
-	vm_os_offer                     = "check-point-cg-r8110"
-	os_version                      = "R8110"
+	vm_os_offer                     = "check-point-cg-r8120"
+	os_version                      = "R8120"
 	bootstrap_script                = "touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt"
 	allow_upload_download           = true
 	authentication_type             = "Password"
@@ -52,14 +52,14 @@ module "example_module" {
 	primary                         = "true"
 	secondary                       = "false"
 	logserver                       = "false"
-	serial_console_password_hash    = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    serial_console_password_hash    = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 	maintenance_mode_password_hash  = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-	nsg_id                          = ""
-	add_storage_account_ip_rules    = false
-	storage_account_additional_ips  = []
+    nsg_id                          = ""
+    add_storage_account_ip_rules    = false
+    storage_account_additional_ips  = []
 }
 ```
-
+  
 
 ### Module's variables:
 
@@ -78,9 +78,9 @@ module "example_module" {
 | **management_GUI_client_network** | Allowed GUI clients - GUI clients network CIDR | string | |
 | **mds_enable_api** | Enable api access to the mds | string | "all";<br/>"management_only";<br/>"gui_clients";<br/>"disable".<br/>**Default:** "disable" |
 | **admin_password** | The password associated with the local administrator account on the mds | string | Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. |
-| **vm_size** | Specifies the size of Virtual Machine | string | "Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_D64s_v3", "Standard_E4s_v3", "Standard_E8s_v3", "Standard_E16s_v3", "Standard_E20s_v3", "Standard_E32s_v3", "Standard_E64s_v3", "Standard_E64is_v3", "Standard_F4s_v2", "Standard_F8s_v2", "Standard_F16s_v2", "Standard_F32s_v2", "Standard_F64s_v2", "Standard_M8ms", "Standard_M16ms", "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_D2_v2", "Standard_D3_v2", "Standard_D4_v2", "Standard_D5_v2", "Standard_D11_v2", "Standard_D12_v2", "Standard_D13_v2", "Standard_D14_v2", "Standard_D15_v2", "Standard_F2", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_D4_v3", "Standard_D8_v3", "Standard_D16_v3", "Standard_D32_v3", "Standard_D64_v3", "Standard_E4_v3", "Standard_E8_v3", "Standard_E16_v3", "Standard_E20_v3", "Standard_E32_v3", "Standard_E64_v3", "Standard_E64i_v3", "Standard_DS11_v2", "Standard_DS12_v2", "Standard_DS13_v2", "Standard_DS14_v2", "Standard_DS15_v2", "Standard_D2_v5", "Standard_D4_v5", "Standard_D8_v5", "Standard_D16_v5","Standard_D32_v5", "Standard_D2s_v5", "Standard_D4s_v5", "Standard_D8s_v5", "Standard_D16s_v5", "Standard_D2d_v5", "Standard_D4d_v5", "Standard_D8d_v5", "Standard_D16d_v5", "Standard_D32d_v5", "Standard_D2ds_v5", "Standard_D4ds_v5", "Standard_D8ds_v5", "Standard_D16ds_v5", "Standard_D32ds_v5". |
+| **vm_size** | Specifies the size of Virtual Machine | string | "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_M8ms", "Standard_M16ms", "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_F2", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_D2_v5", "Standard_D4_v5", "Standard_D8_v5", "Standard_D16_v5","Standard_D32_v5", "Standard_D2s_v5", "Standard_D4s_v5", "Standard_D8s_v5", "Standard_D16s_v5", "Standard_D2d_v5", "Standard_D4d_v5", "Standard_D8d_v5", "Standard_D16d_v5", "Standard_D32d_v5", "Standard_D2ds_v5", "Standard_D4ds_v5", "Standard_D8ds_v5", "Standard_D16ds_v5", "Standard_D32ds_v5". |
 | **disk_size** | Storage data disk size size(GB) | string | A number in the range 100 - 3995 (GB). |
-| **vm_os_sku** | A sku of the image to be deployed | string | "mgmt-byol" - BYOL license. |
+| **vm_os_sku** | A sku of the image to be deployed | string | "mgmt-byol" - BYOL license;<br/>"mgmt-25" - PAYG. |
 | **vm_os_offer** | The name of the image offer to be deployed | string | "check-point-cg-r8110";<br/>"check-point-cg-r8120";<br/>"check-point-cg-r82". |
 | **os_version** | GAIA OS version | string | "R8110";<br/>"R8120";<br/>"R82". |
 | **bootstrap_script** | An optional script to run on the initial boot | string | Bootstrap script example:<br/>"touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt".<br/>The script will create bootstrap.txt file in the /home/admin/ and add 'hello word' string into it.<br/>**Default:** "" |
@@ -99,3 +99,4 @@ module "example_module" {
 | **storage_account_additional_ips** | IPs/CIDRs that are allowed access to the Storage Account | list(string) | A list of valid IPs and CIDRs.<br/>**Default:** [] |
 | **security_rules** | Security rules for the Network Security | list(any) | A list of valid security rules values.<br/>A security rule composed of:<br/>{name, priority, direction, access, protocol, source_port_ranges, destination_port_ranges, source_address_prefix, destination_address_prefix, description}.<br/>**Default:** [{"name":"AllowAllInBound", "priority":"100", "direction":"Inbound", "access":"Allow", "protocol":"*", "source_port_ranges":"*", "destination_port_ranges":"", "description":"Allow all inbound connections", "source_address_prefix":"*", "destination_address_prefix":""}] |
 | **admin_SSH_key** | The SSH public key for SSH connections to the instance.<br/>Used when the authentication_type is 'SSH Public Key' | string | **Default:** "" |
+| **tags** | Tags can be associated either globally across all resources or scoped to specific resource types. For example, a global tag can be defined as: {"all": {"example": "example"}}.<br/>Supported resource types for tag assignment include:<br>`all` (Applies tags universally to all resource instances)<br/>`resource-group`<br/>`network-security-group`<br/>`network-interface`<br/>`public-ip`<br/>`storage-account`<br/>`virtual-machine`<br/>`custom-image`<br/>**Important:** When identical tag keys are defined both globally under `all` and within a specific resource scope, the tag value specified under `all` overrides the resource-specific tag. | map(map(string)) | {} |

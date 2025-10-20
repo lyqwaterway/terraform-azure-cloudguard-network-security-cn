@@ -26,7 +26,7 @@ provider "azurerm" {
 module "example_module" {
 
   source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/single_gateway_new_vnet"
-  version = "1.0.4"
+  version = "1.0.7"
 
   source_image_vhd_uri            = "noCustomUri"
   resource_group_name             = "checkpoint-single-gw-terraform"
@@ -43,8 +43,8 @@ module "example_module" {
   vm_size                         = "Standard_D3_v2"
   disk_size                       = "110"
   vm_os_sku                       = "sg-byol"
-  vm_os_offer                     = "check-point-cg-r8110"
-  os_version                      = "R8110"
+  vm_os_offer                     = "check-point-cg-r8120"
+  os_version                      = "R8120"
   bootstrap_script                = "touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt"
   allow_upload_download           = true
   authentication_type             = "Password"
@@ -58,7 +58,7 @@ module "example_module" {
   storage_account_additional_ips  = []
 }
 ```
-
+  
 ## Conditional creation
 - To enable CloudGuard metrics in order to send statuses and statistics collected from the gateway instance to the Azure Monitor service:
   ```
@@ -67,7 +67,7 @@ module "example_module" {
 
 
 ### Module's variables:
-| Name                                  | Description                                                                                                                                                      | Type           | Allowed values                                                                                                                                                                                                                                    |
+ | Name                                  | Description                                                                                                                                                      | Type           | Allowed values                                                                                                                                                                                                                                    |
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **source_image_vhd_uri**              | The URI of the blob containing the development image. Please use noCustomUri if you want to use marketplace images                                               | string         | **Default:** "noCustomUri"                                                                                                                                                                                                                            |
 | **resource_group_name**               | The name of the resource group that will contain the contents of the deployment                                                                                  | string         | Resource group names only allow alphanumeric characters, periods, underscores, hyphens and parenthesis and cannot end in a period                                                                                              |
@@ -81,9 +81,9 @@ module "example_module" {
 | **admin_password**                    | The password associated with the local administrator account on the gateway                                                                                       | string         | Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character                                                                |
 | **smart_1_cloud_token**               | Smart-1 Cloud token to connect automatically ***Gateway*** to Check Point's Security Management as a Service. Follow these instructions to quickly connect this member to Smart-1 Cloud | string         | A valid token copied from the Connect Gateway screen in Smart-1 Cloud portal                                                                                                           |
 | **sic_key**                           | The Secure Internal Communication one-time secret used to set up trust between the gateway object and the management server                                       | string         | Only alphanumeric characters are allowed, and the value must be 12-30 characters long                                                                                                   |
-| **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                            | string         | Various valid sizes (e.g., "Standard_DS2_v2", "Standard_D4s_v3", etc.)                                                                                                                  |
+| **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                            | string         | Various valid sizes (e.g., "Standard_D4ds_v5", "Standard_D8ds_v5", etc.)                                                                                                                  |
 | **disk_size**                         | Storage data disk size (GB)                                                                                                                                      | string         | A number in the range 100 - 3995 (GB)                                                                                                                                                                                          |
-| **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                | string         | "sg-byol" - BYOL license;<br />                                                                                        |
+| **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                | string         | "sg-byol" - BYOL license;<br />"sg-ngtp" - NGTP PAYG license;<br />"sg-ngtx" - NGTX PAYG license                                                                                        |
 | **vm_os_offer**                       | The name of the image offer to be deployed                                                                                                                       | string         | "check-point-cg-r8110";<br />"check-point-cg-r8120";<br />"check-point-cg-r82";                                                                              |
 | **os_version**                        | GAIA OS version                                                                                                                                                  | string         | "R8110";<br />"R8120";<br />"R82";                                                                                                                                           |
 | **bootstrap_script**                  | An optional script to run on the initial boot                                                                                                                    | string         | Bootstrap script example:<br />"touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt"<br />**Default:** ""                                                                          |
@@ -100,3 +100,4 @@ module "example_module" {
 | **security_rules**                    | SSecurity rules for the Network Security                                                                                                 | list(any)      | A security rule composed of: {name, priority, direction, access, protocol, source_port_ranges, destination_port_ranges, source_address_prefix, destination_address_prefix, description}<br />**Default:** []  |
 | **admin_SSH_key**                     | The SSH public key for SSH connections to the instance. Used when the authentication_type is 'SSH Public Key'                                                     | string         | **Default:** ""                                                                                                                                                                                                                                      |
 | **is_blink**                    | Define if blink image is used for deployment | boolean      | true;<br />false;<br />**Default:** true  |
+| **tags** | Tags can be associated either globally across all resources or scoped to specific resource types. For example, a global tag can be defined as: {"all": {"example": "example"}}.<br/>Supported resource types for tag assignment include:<br>`all` (Applies tags universally to all resource instances)<br/>`resource-group`<br/>`virtual-network`<br/>`network-security-group`<br/>`network-interface`<br/>`public-ip`<br/>`route-table`<br/>`storage-account`<br/>`virtual-machine`<br/>`custom-image`<br/>**Important:** When identical tag keys are defined both globally under `all` and within a specific resource scope, the tag value specified under `all` overrides the resource-specific tag. | map(map(string)) | {} |
