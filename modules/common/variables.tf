@@ -208,7 +208,7 @@ variable "delete_os_disk_on_termination" {
 
 variable "publisher" {
   description = "CheckPoint publisher"
-  default = "1723173839932"
+  default = "1740992136172"
 }
 
 //************** Storage image reference and plan variables ****************//
