@@ -43,8 +43,8 @@ module "example_module" {
         vm_size                         = "Standard_D3_v2"
         disk_size                       = "110"
         vm_os_sku                       = "sg-byol"
-        vm_os_offer                     = "check-point-cg-r8120"
-        os_version                      = "R8120"
+        vm_os_offer                     = "check-point-cg-r82"
+        os_version                      = "R82"
         bootstrap_script                = "touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt"
         allow_upload_download           = true
         authentication_type             = "Password"
@@ -87,7 +87,7 @@ module "example_module" {
 | **sic_key** | The Secure Internal Communication one time secret used to set up trust between the gateway object and the management server | string | Only alphanumeric characters are allowed, and the value must be 12-30 characters long. |
 | **vm_size** | Specifies the size of Virtual Machine | string | "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_M8ms", "Standard_M16ms", "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_F2", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_D2_v5", "Standard_D4_v5", "Standard_D8_v5", "Standard_D16_v5","Standard_D32_v5", "Standard_D2s_v5", "Standard_D4s_v5", "Standard_D8s_v5", "Standard_D16s_v5", "Standard_D2d_v5", "Standard_D4d_v5", "Standard_D8d_v5", "Standard_D16d_v5", "Standard_D32d_v5", "Standard_D2ds_v5", "Standard_D4ds_v5", "Standard_D8ds_v5", "Standard_D16ds_v5", "Standard_D32ds_v5". |
 | **disk_size** | Storage data disk size size(GB) | string | A number in the range 100 - 3995 (GB). |
-| **vm_os_sku** | A sku of the image to be deployed | string | "sg-byol" - BYOL license;<br/>"sg-ngtp" - NGTP PAYG license;<br/>"sg-ngtx" - NGTX PAYG license. |
+| **vm_os_sku** | A sku of the image to be deployed | string | "sg-byol" - BYOL license; |
 | **vm_os_offer** | The name of the image offer to be deployed | string | "check-point-cg-r8110";<br/>"check-point-cg-r8120";<br/>"check-point-cg-r82". |
 | **os_version** | GAIA OS version | string | "R8110";<br/>"R8120";<br/>"R82". |
 | **bootstrap_script** | An optional script to run on the initial boot | string | Bootstrap script example:<br/>"touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt".<br/>The script will create bootstrap.txt file in the /home/admin/ and add 'hello word' string into it.<br/>**Default:** "" |

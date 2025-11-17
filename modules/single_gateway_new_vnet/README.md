@@ -43,8 +43,8 @@ module "example_module" {
   vm_size                         = "Standard_D3_v2"
   disk_size                       = "110"
   vm_os_sku                       = "sg-byol"
-  vm_os_offer                     = "check-point-cg-r8120"
-  os_version                      = "R8120"
+  vm_os_offer                     = "check-point-cg-r82"
+  os_version                      = "R82"
   bootstrap_script                = "touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt"
   allow_upload_download           = true
   authentication_type             = "Password"
@@ -83,7 +83,7 @@ module "example_module" {
 | **sic_key**                           | The Secure Internal Communication one-time secret used to set up trust between the gateway object and the management server                                       | string         | Only alphanumeric characters are allowed, and the value must be 12-30 characters long                                                                                                   |
 | **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                            | string         | Various valid sizes (e.g., "Standard_D4ds_v5", "Standard_D8ds_v5", etc.)                                                                                                                  |
 | **disk_size**                         | Storage data disk size (GB)                                                                                                                                      | string         | A number in the range 100 - 3995 (GB)                                                                                                                                                                                          |
-| **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                | string         | "sg-byol" - BYOL license;<br />"sg-ngtp" - NGTP PAYG license;<br />"sg-ngtx" - NGTX PAYG license                                                                                        |
+| **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                | string         | "sg-byol" - BYOL license;                                                                                     |
 | **vm_os_offer**                       | The name of the image offer to be deployed                                                                                                                       | string         | "check-point-cg-r8110";<br />"check-point-cg-r8120";<br />"check-point-cg-r82";                                                                              |
 | **os_version**                        | GAIA OS version                                                                                                                                                  | string         | "R8110";<br />"R8120";<br />"R82";                                                                                                                                           |
 | **bootstrap_script**                  | An optional script to run on the initial boot                                                                                                                    | string         | Bootstrap script example:<br />"touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt"<br />**Default:** ""                                                                          |
