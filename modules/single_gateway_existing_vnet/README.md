@@ -40,7 +40,7 @@ module "example_module" {
         admin_password                  = "xxxxxxxxxxxx"
         smart_1_cloud_token             = "xxxxxxxxxxxx"
         sic_key                         = "xxxxxxxxxxxx"
-        vm_size                         = "Standard_D3_v2"
+        vm_size                         = "Standard_D4_v4"
         disk_size                       = "110"
         vm_os_sku                       = "sg-byol"
         vm_os_offer                     = "check-point-cg-r82"
@@ -85,7 +85,7 @@ module "example_module" {
 | **admin_password** | The password associated with the local administrator account on the gateway | string | Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. |
 | **smart_1_cloud_token** | Smart-1 Cloud token to connect automatically ***Gateway*** to Check Point's Security Management as a Service.<br/><br/>Follow these instructions to quickly connect this member to Smart-1 Cloud - [SK180501](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk180501) | string | A valid token copied from the Connect Gateway screen in Smart-1 Cloud portal. |
 | **sic_key** | The Secure Internal Communication one time secret used to set up trust between the gateway object and the management server | string | Only alphanumeric characters are allowed, and the value must be 12-30 characters long. |
-| **vm_size** | Specifies the size of Virtual Machine | string | "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_M8ms", "Standard_M16ms", "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_F2", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_D2_v5", "Standard_D4_v5", "Standard_D8_v5", "Standard_D16_v5","Standard_D32_v5", "Standard_D2s_v5", "Standard_D4s_v5", "Standard_D8s_v5", "Standard_D16s_v5", "Standard_D2d_v5", "Standard_D4d_v5", "Standard_D8d_v5", "Standard_D16d_v5", "Standard_D32d_v5", "Standard_D2ds_v5", "Standard_D4ds_v5", "Standard_D8ds_v5", "Standard_D16ds_v5", "Standard_D32ds_v5". |
+| **vm_size** | Specifies the size of Virtual Machine | string | "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_M8ms", "Standard_M16ms", "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_F2", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_D2_v4", "Standard_D4_v4", "Standard_D8_v4", "Standard_D16_v4","Standard_D32_v4", "Standard_D2s_v4", "Standard_D4s_v4", "Standard_D8s_v4", "Standard_D16s_v4", "Standard_D2d_v4", "Standard_D4d_v4", "Standard_D8d_v4", "Standard_D16d_v4", "Standard_D32d_v4", "Standard_D2ds_v4", "Standard_D4ds_v4", "Standard_D8ds_v4", "Standard_D16ds_v4", "Standard_D32ds_v4". |
 | **disk_size** | Storage data disk size size(GB) | string | A number in the range 100 - 3995 (GB). |
 | **vm_os_sku** | A sku of the image to be deployed | string | "sg-byol" - BYOL license; |
 | **vm_os_offer** | The name of the image offer to be deployed | string | "check-point-cg-r8110";<br/>"check-point-cg-r8120";<br/>"check-point-cg-r82". |
