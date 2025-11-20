@@ -40,7 +40,7 @@ module "example_module" {
     management_GUI_client_network   = "0.0.0.0/0"
     mds_enable_api                  = "disable"
     admin_password                  = "xxxxxxxxxxxx"
-    vm_size                         = "Standard_D4_v4"
+    vm_size                         = "Standard_D4ds_v4"
     disk_size                       = "110"
     vm_os_sku                       = "mgmt-byol"
     vm_os_offer                     = "check-point-cg-r82"

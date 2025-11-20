@@ -44,7 +44,7 @@ module "example_module" {
         smart_1_cloud_token_a           = "xxxxxxxxxxxx"
         smart_1_cloud_token_b           = "xxxxxxxxxxxx"
         sic_key                         = "xxxxxxxxxxxx"
-        vm_size                         = "Standard_D4_v4"
+        vm_size                         = "Standard_D4ds_v4"
         disk_size                       = "110"
         vm_os_sku                       = "sg-byol"
         vm_os_offer                     = "check-point-cg-r82"

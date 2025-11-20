@@ -43,7 +43,7 @@ module "example_module" {
     backend_lb_IP_address           = 4
     admin_password                  = "xxxxxxxxxxxx"
     sic_key                         = "xxxxxxxxxxxx"
-    vm_size                         = "Standard_D4_v4"
+    vm_size                         = "Standard_D4ds_v4"
     disk_size                       = "100"
     vm_os_sku                       = "sg-byol"
     vm_os_offer                     = "check-point-cg-r82"
