@@ -18,7 +18,7 @@ Follow best practices for using CGNS modules on [the root page](https://registry
 **Example:**
 ```
 provider "azurerm" {
-  chinanorth3environment = "china”
+  environment = "china"
   skip_provider_registration = true
   features {}
 }
