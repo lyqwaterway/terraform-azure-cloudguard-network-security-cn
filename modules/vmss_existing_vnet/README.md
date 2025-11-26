@@ -1,19 +1,19 @@
-# Check Point CloudGuard IaaS VMSS Terraform deployment for Azure
+# Check Point CloudGuard VMSS Module - Existing VNet
 
-This Terraform module deploys Check Point CloudGuard IaaS VMSS solution into an existing Vnet in Azure.
+This Terraform module deploys Check Point CloudGuard Network Security VMSS solution into an existing VNet in azure.
 As part of the deployment the following resources are created:
 - Resource group
 - Role assignment - conditional creation
 
 
 For additional information,
-please see the [CloudGuard Network for Azure Virtual Machine Scale Sets (VMSS) Deployment Guide](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_VMSS_for_Azure/Default.htm) 
+please see the [CloudGuard Network for Azure Virtual Machine Scale Sets (VMSS) Deployment Guide](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_VMSS_for_Azure/Default.htm)
 
 This solution uses the following modules:
 - common - used for creating a resource group and defining common variables.
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest).
 
 **Example:**
 ```
@@ -25,7 +25,7 @@ provider "azurerm" {
 
 module "example_module" {
 
-  source  = "CheckPointSW/cloudguard-network-security/azure//modules/vmss_existing_vnet"
+  source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/vmss_existing_vnet"
   version = "1.0.9"
 
     subscription_id                 = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -114,7 +114,7 @@ module "example_module" {
 | **backend_lb_IP_address** | Is a whole number that can be represented as a binary integer with no more than the number of digits remaining in the address after the given prefix | string | Starting from 5-th IP address in a subnet. For example: subnet - 10.0.1.0/24, backend_lb_IP_address = 4 , the LB IP is 10.0.1.4. |
 | **admin_password** | The password associated with the local administrator account on each cluster member | string | Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. |
 | **sic_key** | The Secure Internal Communication one time secret used to set up trust between the cluster object and the management server | string | Only alphanumeric characters are allowed, and the value must be 12-30 characters long. |
-| **vm_size** | Specifies the size of Virtual Machine | string | "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_M8ms", "Standard_M16ms", "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_F2", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_D2_v5", "Standard_D4_v5", "Standard_D8_v5", "Standard_D16_v5","Standard_D32_v5", "Standard_D2s_v5", "Standard_D4s_v5", "Standard_D8s_v5", "Standard_D16s_v5", "Standard_D2d_v5", "Standard_D4d_v5", "Standard_D8d_v5", "Standard_D16d_v5", "Standard_D32d_v5", "Standard_D2ds_v5", "Standard_D4ds_v5", "Standard_D8ds_v5", "Standard_D16ds_v5", "Standard_D32ds_v5". |
+| **vm_size** | Specifies the size of Virtual Machine | string | "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_M8ms", "Standard_M16ms", "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_F2", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_D2_v4", "Standard_D4_v4", "Standard_D8_v4", "Standard_D16_v4","Standard_D32_v4", "Standard_D2s_v4", "Standard_D4s_v4", "Standard_D8s_v4", "Standard_D16s_v4", "Standard_D2d_v4", "Standard_D4d_v4", "Standard_D8d_v4", "Standard_D16d_v4", "Standard_D32d_v4", "Standard_D2ds_v4", "Standard_D4ds_v4", "Standard_D8ds_v4", "Standard_D16ds_v4", "Standard_D32ds_v4". |
 | **disk_size** | Storage data disk size size(GB) must be 100 for versions R81.20 and below | string | A number in the range 100 - 3995 (GB).<br/>**Default:** 100 |
 | **vm_os_sku** | A sku of the image to be deployed | string | "sg-byol" - BYOL license; |
 | **vm_os_offer** | The name of the image offer to be deployed | string | "check-point-cg-r8110";<br/>"check-point-cg-r8120";<br/>"check-point-cg-r82". |

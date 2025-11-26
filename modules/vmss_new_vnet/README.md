@@ -9,7 +9,7 @@ As part of the deployment the following resources are created:
 
 
 For additional information,
-please see the [CloudGuard Network for Azure Virtual Machine Scale Sets (VMSS) Deployment Guide](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_VMSS_for_Azure/Default.htm) 
+please see the [CloudGuard Network for Azure Virtual Machine Scale Sets (VMSS) Deployment Guide](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_VMSS_for_Azure/Default.htm)
 
 This solution uses the following modules:
 - common - used for creating a resource group and defining common variables.
@@ -18,7 +18,7 @@ This solution uses the following modules:
 
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest).
 
 **Example:**
 ```
@@ -30,8 +30,8 @@ provider "azurerm" {
 
 module "example_module" {
 
-    source  = "CheckPointSW/cloudguard-network-security/azure//modules/vmss_new_vnet"
-    version = "1.0.8"
+    source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/vmss_new_vnet"
+    version = "1.0.9"
 
     subscription_id                 = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     source_image_vhd_uri            = "noCustomUri"
@@ -113,7 +113,7 @@ module "example_module" {
 | **backend_lb_IP_address**             | A whole number that can be represented as a binary integer with no more than the number of digits remaining in the address after the given prefix                        | number         | Starting from the 5th IP address in a subnet. For example: subnet - 10.0.1.0/24, backend_lb_IP_address = 4, the LB IP is 10.0.1.4<br />                                                                                              |
 | **admin_password**                    | The password associated with the local administrator account on each cluster member                                                                                     | string         | Password must have 3 of the following: 1 lowercase character, 1 uppercase character, 1 number, and 1 special character<br />                                                                  |
 | **sic_key**                           | The Secure Internal Communication one-time secret used to set up trust between the cluster object and the management server                                             | string         | Only alphanumeric characters are allowed, and the value must be 12-30 characters long<br />                                                                                                   |
-| **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                                   | string         | A list of valid VM sizes, e.g., "Standard_D4ds_v5", "Standard_D8ds_v5", etc.<br />                                                                                          |
+| **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                                   | string         | A list of valid VM sizes, e.g., "Standard_D4ds_v4", "Standard_D8ds_v4", etc.<br />                                                                                          |
 | **disk_size**                         | Storage data disk size (GB) must be 100 for versions R81.20 and below                                                                                                   | string         | A number in the range 100 - 3995 (GB)<br />**Default:** 100                                                                                                                                                                                          |
 | **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                      | string         | "sg-byol" - BYOL license;                                                                                      |
 | **vm_os_offer**                       | The name of the image offer to be deployed                                                                                                                              | string         | "check-point-cg-r8110";<br />"check-point-cg-r8120";<br />"check-point-cg-r82";<br />                                                                              |

@@ -12,7 +12,7 @@ This solution uses the following modules:
 - common - used for creating a resource group and defining common variables.
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest).
 
 **Example:**
 ```
@@ -24,7 +24,7 @@ provider "azurerm" {
 
 module "example_module" {
 
-        source  = "CheckPointSW/cloudguard-network-security/azure//modules/high_availability_existing_vnet"
+        source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/high_availability_existing_vnet"
         version = "1.0.9"
 
         tenant_id                       = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -110,7 +110,7 @@ module "example_module" {
 | **smart_1_cloud_token_a**             | Smart-1 Cloud token to connect automatically ***Member A*** to Check Point's Security Management as a Service. Follow these instructions to connect this member.  | string         | A valid token copied from the Connect Gateway screen in Smart-1 Cloud portal<br />                                                                                                           |
 | **smart_1_cloud_token_b**             | Smart-1 Cloud token to connect automatically ***Member B*** to Check Point's Security Management as a Service. Follow these instructions to connect this member.  | string         | A valid token copied from the Connect Gateway screen in Smart-1 Cloud portal<br />                                                                                                           |
 | **sic_key**                           | The Secure Internal Communication one-time secret used to set up trust between the cluster object and the management server                                       | string         | Only alphanumeric characters are allowed, and the value must be 12-30 characters long<br />                                                                                                   |
-| **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                            | string         | Various valid sizes (e.g., "Standard_D4ds_v5", "Standard_D8ds_v5", etc.)<br />                                                                                                                  |
+| **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                            | string         | Various valid sizes (e.g., "Standard_D4ds_v4", "Standard_D8ds_v4", etc.)<br />                                                                                                                  |
 | **disk_size**                         | Storage data disk size (GB)                                                                                                                                      | string         | A number in the range 100 - 3995 (GB)<br />                                                                                                                                                                                          |
 | **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                | string         | "sg-byol" - BYOL license;                                                                                        |
 | **vm_os_offer**                       | The name of the image offer to be deployed                                                                                                                       | string         | "check-point-cg-r81.10";<br />"check-point-cg-r81.20";<br />"check-point-cg-r82";<br />                                                                            |

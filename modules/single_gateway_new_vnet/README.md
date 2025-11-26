@@ -1,6 +1,6 @@
-# Check Point CloudGuard Network Security Single Gateway Terraform deployment for Azure
+# Check Point CloudGuard Single Gateway Module - New VNet
 
-This Terraform module deploys Check Point CloudGuard Network Security Single Gateway solution into a new Vnet in Azure.
+This Terraform module deploys Check Point CloudGuard Network Security Single Gateway solution into a new VNet in azure.
 As part of the deployment the following resources are created:
 - Resource group
 - Virtual network
@@ -8,13 +8,13 @@ As part of the deployment the following resources are created:
 - System assigned identity
 
 
-This solution uses the following modules:
-- /terraform/azure/modules/common - used for creating a resource group and defining common variables.
-- /terraform/azure/modules/vnet - used for creating new virtual network and subnets.
-- /terraform/azure/modules/network_security_group - used for creating new network security groups and rules.
+This solution uses the following submodules:
+- common - used for creating a resource group and defining common variables.
+- vnet - used for creating new virtual network and subnets.
+- network_security_group - used for creating new network security groups and rules.
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/cloudguard-network-security/azure/latest).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest).
 
 **Example:**
 ```
@@ -26,7 +26,7 @@ provider "azurerm" {
 
 module "example_module" {
 
-  source  = "CheckPointSW/cloudguard-network-security/azure//modules/single_gateway_new_vnet"
+  source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/single_gateway_new_vnet"
   version = "1.0.9"
 
   source_image_vhd_uri            = "noCustomUri"
@@ -82,7 +82,7 @@ module "example_module" {
 | **admin_password**                    | The password associated with the local administrator account on the gateway                                                                                       | string         | Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character                                                                |
 | **smart_1_cloud_token**               | Smart-1 Cloud token to connect automatically ***Gateway*** to Check Point's Security Management as a Service. Follow these instructions to quickly connect this member to Smart-1 Cloud | string         | A valid token copied from the Connect Gateway screen in Smart-1 Cloud portal                                                                                                           |
 | **sic_key**                           | The Secure Internal Communication one-time secret used to set up trust between the gateway object and the management server                                       | string         | Only alphanumeric characters are allowed, and the value must be 12-30 characters long                                                                                                   |
-| **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                            | string         | Various valid sizes (e.g., "Standard_D4ds_v5", "Standard_D8ds_v5", etc.)                                                                                                                  |
+| **vm_size**                           | Specifies the size of Virtual Machine                                                                                                                            | string         | Various valid sizes (e.g., "Standard_D4ds_v4", "Standard_D8ds_v4", etc.)                                                                                                                  |
 | **disk_size**                         | Storage data disk size (GB)                                                                                                                                      | string         | A number in the range 100 - 3995 (GB)                                                                                                                                                                                          |
 | **vm_os_sku**                         | A SKU of the image to be deployed                                                                                                                                | string         | "sg-byol" - BYOL license;                                                                                     |
 | **vm_os_offer**                       | The name of the image offer to be deployed                                                                                                                       | string         | "check-point-cg-r8110";<br />"check-point-cg-r8120";<br />"check-point-cg-r82";                                                                              |
