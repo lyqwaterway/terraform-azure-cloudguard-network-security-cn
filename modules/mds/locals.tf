@@ -1,6 +1,6 @@
 locals {
   module_name    = "mds_terraform_registry"
-  module_version = "1.0.9"
+  module_version = "1.1.0"
 
   // NSG base security rules
   nsg_base_security_rules = [
