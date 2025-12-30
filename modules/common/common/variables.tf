@@ -153,21 +153,22 @@ variable "vm_size" {
   type        = string
 
   validation {
-    condition = contains(["Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_M8ms",
-      "Standard_M16ms", "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_F2", "Standard_F4",
-      "Standard_F8", "Standard_F16", "Standard_D2_v5", "Standard_D4_v5", "Standard_D8_v5", "Standard_D16_v5",
-      "Standard_D32_v5", "Standard_D2s_v5", "Standard_D4s_v5", "Standard_D8s_v5", "Standard_D16s_v5",
-      "Standard_D2d_v5", "Standard_D4d_v5", "Standard_D8d_v5", "Standard_D16d_v5", "Standard_D32d_v5",
-      "Standard_D2ds_v5", "Standard_D4ds_v5", "Standard_D8ds_v5", "Standard_D16ds_v5", "Standard_D32ds_v5"
+    condition = contains(["Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s", "Standard_M8ms", "Standard_M16ms",
+      "Standard_M32ms", "Standard_M64ms", "Standard_M64s", "Standard_F2", "Standard_F4", "Standard_F8",
+      "Standard_F16", "Standard_D2_v4", "Standard_D4_v4", "Standard_D8_v4", "Standard_D16_v4",
+      "Standard_D32_v4", "Standard_D2s_v4", "Standard_D4s_v4", "Standard_D8s_v4", "Standard_D16s_v4",
+      "Standard_D2d_v4", "Standard_D4d_v4", "Standard_D8d_v4", "Standard_D16d_v4", "Standard_D32d_v4",
+      "Standard_D2ds_v4", "Standard_D4ds_v4", "Standard_D8ds_v4", "Standard_D16ds_v4",
+      "Standard_D32ds_v4"
     ], var.vm_size)
     error_message = <<-EOF
-      Variable [vm_size] must be one of the allowed VM sizes: 'Standard_F2s', 'Standard_F4s', 'Standard_F8s',
-      'Standard_F16s', 'Standard_M8ms', 'Standard_M16ms', 'Standard_M32ms', 'Standard_M64ms', 'Standard_M64s',
-      'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_D2_v5', 'Standard_D4_v5',
-      'Standard_D8_v5', 'Standard_D16_v5', 'Standard_D32_v5', 'Standard_D2s_v5', 'Standard_D4s_v5',
-      'Standard_D8s_v5', 'Standard_D16s_v5', 'Standard_D2d_v5', 'Standard_D4d_v5', 'Standard_D8d_v5',
-      'Standard_D16d_v5', 'Standard_D32d_v5', 'Standard_D2ds_v5', 'Standard_D4ds_v5', 'Standard_D8ds_v5',
-      'Standard_D16ds_v5', 'Standard_D32ds_v5'.
+      Variable [vm_size] must be one of the allowed VM sizes: 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_M8ms', 'Standard_M16ms',
+      'Standard_M32ms', 'Standard_M64ms', 'Standard_M64s', 'Standard_F2', 'Standard_F4', 'Standard_F8',
+      'Standard_F16', 'Standard_D2_v4', 'Standard_D4_v4', 'Standard_D8_v4', 'Standard_D16_v4',
+      'Standard_D32_v4', 'Standard_D2s_v4', 'Standard_D4s_v4', 'Standard_D8s_v4', 'Standard_D16s_v4',
+      'Standard_D2d_v4', 'Standard_D4d_v4', 'Standard_D8d_v4', 'Standard_D16d_v4', 'Standard_D32d_v4',
+      'Standard_D2ds_v4', 'Standard_D4ds_v4', 'Standard_D8ds_v4', 'Standard_D16ds_v4',
+      'Standard_D32ds_v4'.
     EOF
   }
 }
@@ -180,7 +181,7 @@ variable "delete_os_disk_on_termination" {
 
 variable "publisher" {
   description = "CheckPoint publisher"
-  default     = "checkpoint"
+  default     = "1740992136172"
 }
 
 //************** Storage image reference and plan variables ****************//
