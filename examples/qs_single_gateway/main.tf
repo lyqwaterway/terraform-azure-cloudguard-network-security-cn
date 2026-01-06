@@ -5,7 +5,7 @@ provider "azurerm" {
 }
 
 module "example_module" {
-  source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/management"
+  source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/single-gateway"
   version = "1.1.3"
 
   # Authentication Variables
@@ -15,34 +15,42 @@ module "example_module" {
   subscription_id                 = var.subscription_id
 
   # Basic Configurations Variables
-  resource_group_name = "checkpoint-mgmt-terraform"
-  mgmt_name           = "checkpoint-mgmt-terraform"
+  resource_group_name = "checkpoint-single-rg-terraform"
+  single_gateway_name = "checkpoint-single-terraform"
   location            = "chinanorth3"
   tags                = {}
 
   # Virtual Machine Instances Variables
   source_image_vhd_uri           = "noCustomUri"
   authentication_type            = "Password"
+  sic_key                        = "xxxxxxxxxxx"
   admin_password                 = "xxxxxxxxxxx"
   serial_console_password_hash   = "xxxxxxxxxxx"
   maintenance_mode_password_hash = "xxxxxxxxxxx"
+  installation_type              = "gateway"
   vm_size                        = "Standard_D4ds_v4"
   disk_size                      = "110"
   os_version                     = "R82"
-  vm_os_sku                      = "mgmt-byol"
+  vm_os_sku                      = "sg-byol"
   vm_os_offer                    = "check-point-cg-r82"
   allow_upload_download          = true
   admin_shell                    = "/etc/cli.sh"
   bootstrap_script               = "touch /home/admin/bootstrap.txt; echo 'hello_world' > /home/admin/bootstrap.txt"
+  enable_custom_metrics          = true
   zone                           = ""
 
+  # Smart-1 Cloud Variables
+  smart_1_cloud_token = ""
+
+  # Management Variables
+  management_GUI_client_network = "0.0.0.0/0"
+
   # Networking Variables
-  vnet_name                       = "checkpoint-mgmt-vnet"
-  subnet_name                     = "checkpoint-mgmt-vnet-subnet"
+  vnet_name                       = "checkpoint-single-gw-vnet"
+  frontend_subnet_name            = "Frontend"
+  backend_subnet_name             = "Backend"
   address_space                   = "10.0.0.0/16"
-  subnet_prefix                   = "10.0.0.0/24"
-  management_GUI_client_network   = "0.0.0.0/0"
-  mgmt_enable_api                 = "disable"
+  subnet_prefixes                 = ["10.0.1.0/24", "10.0.2.0/24"]
   nsg_id                          = ""
   storage_account_deployment_mode = "New"
   add_storage_account_ip_rules    = false

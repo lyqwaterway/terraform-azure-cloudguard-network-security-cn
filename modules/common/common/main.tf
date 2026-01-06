@@ -6,13 +6,12 @@ resource "azurerm_resource_group" "resource_group" {
 
 module "regions" {
   source  = "Azure/avm-utl-regions/azurerm"
-  version = "0.5.1"
+  version = "0.9.3"
 
   count                     = var.is_zonal ? 1 : 0
   use_cached_data           = false
   enable_telemetry          = false
-  availability_zones_filter = true
-  recommended_filter        = false
+  has_availability_zones    = true
 }
 
 resource "null_resource" "validate_region" {
