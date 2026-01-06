@@ -70,7 +70,7 @@ Add the required module in your Terraform configuration file (`main.tf`) to depl
 
 ```hcl
 provider "azurerm" {
-  environment = "china”
+  environment = "china"
   skip_provider_registration = true
   features {}
 }
