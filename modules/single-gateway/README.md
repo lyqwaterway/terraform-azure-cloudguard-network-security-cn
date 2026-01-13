@@ -103,18 +103,18 @@ enable_custom_metrics = true
 ### Boot Diagnostics:
 You can configure boot diagnostics by selecting the desired storage account deployment mode or disabling boot diagnostics entirely. The available options for `storage_account_deployment_mode` are:
 - `New` Creates a new storage account to be used for boot diagnostics.<br/>
-  Usage: `storage_account_deployment_mode = "New"`
+Usage: `storage_account_deployment_mode = "New"`
 - `Exists` Uses an existing storage account for boot diagnostics.<br/>
-  Usages:
+Usages:
   ```
   storage_account_deployment_mode                  = "Existing"
   existing_storage_account_name                    = "EXISTING_STORAGE_ACCOUNT_NAME"
   existing_storage_account_resource_group_name     = "EXISTING_STORAGE_ACCOUNT_RESOURCE_GROUP_NAME"
   ```
 - `Managed`: Uses a managed (automatically created) storage account for boot diagnostics.<br/>
-  Usage: `storage_account_deployment_mode = "Managed"`
+Usage: `storage_account_deployment_mode = "Managed"`
 - `None`: Disables boot diagnostics.<br/>
-  Usage: `storage_account_deployment_mode = "None"`<br/>
+Usage: `storage_account_deployment_mode = "None"`<br/>
 
 ## Module's variables:
 | Name | Description | Type | Allowed values                                                                                                                                                                                               |
