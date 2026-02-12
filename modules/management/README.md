@@ -32,7 +32,7 @@ provider "azurerm" {
 
 module "example_module" {
   source  = "CheckPointSW/china-cloudguard-network-security/azure//modules/management"
-  version = "~> 1.0"
+  version = "~> 1.1"
 
   # Authentication Variables
   client_secret                   = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -91,7 +91,7 @@ provider "azurerm" {
 
 module "example_module" {
   source  = "CheckPointSW/china-cloudguard-network-security/azure//modules/management"
-  version = "1.0.6"
+  version = "~> 1.1"
 
   # Authentication Variables
   client_secret                   = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

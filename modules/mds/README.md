@@ -26,8 +26,8 @@ provider "azurerm" {
 }
 
 module "example_module" {
-  source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/mds"
-  version = "1.1.0"
+  source  = "CheckPointSW/china-cloudguard-network-security/azure//modules/mds"
+  version = "~> 1.1"
 
   # Authentication Variables
   client_secret                   = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
