@@ -18,24 +18,20 @@ This repository provides a structured set of Terraform modules for deploying Che
 
  
 **Submodules:**
-* [`high_availability_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/high_availability_existing_vnet) - Deploys CloudGuard High Availability solution into an existing VNet in azure.
-* [`high_availability_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/high_availability_new_vnet) Deploys CloudGuard High Availability solution into a new VNet.
-* [`management_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/management_existing_vnet) - Deploys CloudGuard Management solution into an existing VNet.
-* [`management_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/management_new_vnet) - Deploys CloudGuard Management solution into a new VNet
-* [`mds_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/mds_existing_vnet) - Deploys CloudGuard Management solution into a new VNet.
-* [`mds_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/mds_new_vnet) - Deploys CloudGuard Management solution into a new VNet.
-* [`single_gateway_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/single_gateway_existing_vnet) - Deploys CloudGuard Single Gateway solution into an existing VNet.
-* [`single_gateway_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/single_gateway_new_vnet) - Deploys CloudGuard Single Gateway solution into a new VNet.                   
-* [`vmss_existing_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/vmss_existing_vnet) - Deploys CloudGuard VMSS solution into an existing VNet.
-* [`vmss_new_vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/vmss_new_vnet) - Deploys CloudGuard VMSS solution into a new VNet.
+
+* [`high-availability`](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest/submodules/high-availability) Deploys CloudGuard High Availability solution.
+* [`management`](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest/submodules/management) - Deploys CloudGuard Management solution.
+* [`mds`](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest/submodules/mds) - Deploys CloudGuard Management solution.
+* [`single-gateway`](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest/submodules/single-gateway) - Deploys CloudGuard Single Gateway solution . 
+* [`vmss`](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest/submodules/vmss) - Deploys CloudGuard VMSS solution.
 
 Internal Submodules - 
 
-* [`common`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/common) - Contains shared configurations and reusable components for all modules.
+* [`common`](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest/submodules/common) - Contains shared configurations and reusable components for all modules.
 
-* [`network_security_group`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/network_security_group) - Manages Network Security Groups (NSGs) with CloudGuard-specific rules.
+* [`network_security_group`](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest/submodules/network_security_group) - Manages Network Security Groups (NSGs) with CloudGuard-specific rules.
 
-- [`vnet`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest/submodules/vnet) - Simplifies Virtual Network and subnet configurations.
+- [`vnet`](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest/submodules/vnet) - Simplifies Virtual Network and subnet configurations.
 
 
 ## Security Rules Default Configuration
@@ -76,7 +72,7 @@ provider "azurerm" {
 }
 
 module "example_module" {
-  source  = "lyqwaterway/cloudguard-network-security-cn/azure//modules/{module_name}"
+  source  = "CheckPointSW/china-cloudguard-network-security/azure//modules/{module_name}"
   version = "{chosen_version}"
   # Add the required inputs
 }
