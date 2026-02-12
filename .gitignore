@@ -146,7 +146,8 @@ deprecated/
 *.tfstate
 *.tfstate.backup
 .crash
-.terraform/
+.terraform
+.terraform/*
 .terraform.lock.hcl
 plan.out
 .DS_Store
