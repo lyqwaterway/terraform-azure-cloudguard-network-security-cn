@@ -5,7 +5,7 @@ provider "azurerm" {
 }
 
 module "example_module" {
-  source  = "CheckPointSW/china-cloudguard-network-security-cn/azure//modules/high-availability"
+  source  = "CheckPointSW/china-cloudguard-network-security/azure//modules/high-availability"
   version = "~> 1.1"
 
   # Authentication Variables

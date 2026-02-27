@@ -19,7 +19,7 @@ For additional information,
 please see the [CloudGuard Network for Azure Virtual Machine Scale Sets (VMSS) Deployment Guide](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_VMSS_for_Azure/Default.htm) 
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest).
 
 ### Example Deployments
 
@@ -113,6 +113,8 @@ module "example_module" {
 ```hcl
 provider "azurerm" {
   features {}
+  environment = "china"
+  skip_provider_registration = true
 }
 
 module "example_module" {

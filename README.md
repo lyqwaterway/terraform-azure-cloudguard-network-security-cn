@@ -1,4 +1,4 @@
-![GitHub Wachers](https://img.shields.io/github/watchers/lyqwaterway/terraform-azure-cloudguard-network-security-cn)
+![GitHub Wachers](https://img.shields.io/github/watchers/CheckPointSW/terraform-azure-china-cloudguard-network-security)
 ![GitHub Release](https://img.shields.io/github/v/release/lyqwaterway/terraform-azure-cloudguard-network-security-cn)
 ![GitHub Commits Since Last Commit](https://img.shields.io/github/commits-since/lyqwaterway/terraform-azure-cloudguard-network-security-cn/latest/master)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/lyqwaterway/terraform-azure-cloudguard-network-security-cn/master)

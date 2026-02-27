@@ -15,7 +15,7 @@ This solution uses the following modules:
 - storage-account - used for creating new storage account or using an existing one to use for the boot diagnostics.
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/azure/latest).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/azure/latest).
 
 **Example:**
 ```hcl
