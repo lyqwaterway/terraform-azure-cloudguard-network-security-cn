@@ -116,7 +116,7 @@ provider "azurerm" {
 }
 
 module "example_module" {
-  source  = "CheckPointSW/cloudguard-network-security/azure//modules/vmss"
+  source  = "CheckPointSW/china-cloudguard-network-security/azure//modules/vmss"
   version = "1.0.6"
 
   # Authentication Variables
@@ -128,7 +128,7 @@ module "example_module" {
   # Basic Configurations Variables
   vmss_name           = "checkpoint-vmss-terraform"
   resource_group_name = "checkpoint-vmss-terraform"
-  location            = "eastus"
+  location            = "chinanorth3"
   tags                = {}
 
   # Virtual Machine Instances Variables
@@ -138,7 +138,7 @@ module "example_module" {
   sic_key                        = "xxxxxxxxxxxx"
   serial_console_password_hash   = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   maintenance_mode_password_hash = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  vm_size                        = "Standard_D4ds_v5"
+  vm_size                        = "Standard_D4ds_v4"
   disk_size                      = "100"
   os_version                     = "R82"
   vm_os_sku                      = "sg-byol"
